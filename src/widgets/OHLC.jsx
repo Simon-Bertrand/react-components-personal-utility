@@ -16,6 +16,44 @@ export function EChart1({data}) {
     const otherColumns = Object.keys(data).filter(x=> !["t","o","c","l","v","h"].includes(x))
     const colorList = ['rgba(155, 89, 182,1.0)', 'rgba(52, 152, 219,1.0)', 'rgba(241, 196, 15,1.0)', 'rgba(232, 67, 147,1.0)', 'rgba(253, 203, 110,1.0)', 'rgba(0, 206, 201,1.0)', 'rgba(162, 155, 254,1.0)', 'rgba(85, 239, 196,1.0)', '#6e7074', '#546570', '#c4ccd3'];
 
+    let volumnSerie = Object.keys(data).includes("v")?[{
+        name: 'Volume',
+        type: 'bar',
+        xAxisIndex: 1,
+        yAxisIndex: 1,
+        data: data.v
+    }]: [];
+
+    let volumnXAxis = Object.keys(data).includes("v")? [{
+        type: 'category',
+        gridIndex: 1,
+        data: data.t,
+        boundaryGap: false,
+        axisLine: { onZero: false },
+        axisTick: { show: false },
+        splitLine: { show: false },
+        axisLabel: { show: false },
+        min: 'dataMin',
+        max: 'dataMax'
+      }]:[]
+
+      let volumnYAxis = Object.keys(data).includes("v")? [{
+          scale: true,
+          gridIndex: 1,
+          splitNumber: 2,
+          axisLabel: { show: false },
+          axisLine: { show: false },
+          axisTick: { show: false },
+          splitLine: { show: false }
+        }]:[]
+
+    let volumnGrid = Object.keys(data).includes("v")? [{
+        left: 0, right: 70, top: height + 120, height: 60
+      }]:[]
+
+    console.log([...volumnXAxis, ...volumnYAxis])
+
+
 
     const option = {
         animation: true,
@@ -52,7 +90,8 @@ export function EChart1({data}) {
             data: data.t,
             boundaryGap: false,
             axisLine: { lineStyle: { color: font_color } },
-            }
+            }, 
+            ...volumnXAxis
         ],
         dataZoom: [
             { type: 'slider', show: true, xAxisIndex: [0], fillerColor: 'rgba(50,50,50,0.5)',  handleColor: 'rgba(50,50,50,1)'},
@@ -67,9 +106,9 @@ export function EChart1({data}) {
             splitLine: { show: true, lineStyle: { color: "rgba(255,255,255,0.1)" } },
             axisTick: { show: false },
             axisLabel: { inside: true, formatter: '{value}\n'  }
-            }
+            }, ...volumnYAxis
         ],
-        grid: [ { left: 0, right: 70, top: 60, height: height+60 } ],
+        grid: [ { left: 0, right: 70, top: 60, height: height+60 }, ...volumnGrid ],
         series: [
             {
             name: 'OHLC',
@@ -95,7 +134,8 @@ export function EChart1({data}) {
                     width: 2
                     }
                 }
-            })
+            }),
+            ...volumnSerie
         ]
     }
     

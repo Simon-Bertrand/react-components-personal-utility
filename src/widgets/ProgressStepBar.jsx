@@ -1,7 +1,3 @@
-
-
-import {useState} from "react"
-
 export function ProgressStepBar(props) {
     if (props.step > props.listOfStep.length) {
         const msg = "ProgressStepBar : The given step is currently overflowing the list of steps"
