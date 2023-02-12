@@ -2,6 +2,7 @@ import { useState , useEffect} from 'react'
 import {List} from "./widgets/List"
 import {CodeEditor} from "./widgets/CodeEditor"
 import {EChart1} from "./widgets/OHLC"
+import {ProgressStepBar} from "./widgets/ProgressStepBar"
 
 function calculateMA(dayCount, data) {
   let result = [];
@@ -53,6 +54,11 @@ function App() {
         <h1 className='text-center'>Widgets examples</h1>
         <div className='container mx-auto p-4'>
           <List></List>
+        </div>
+        <div className='container mx-auto p-12'>
+          <ProgressStepBar step={2} listOfStep={["Step 1", "Step 2", "Step 3", "Step 4"]}></ProgressStepBar>
+        </div>
+        <div className='container mx-auto p-4'>
           <EChart1 data={data}/>
         </div>
         <div className='container mx-auto p-4'>
