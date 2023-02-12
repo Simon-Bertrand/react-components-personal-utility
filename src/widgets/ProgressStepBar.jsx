@@ -1,55 +1,6 @@
 
 
 import {useState} from "react"
-// class DotManager {
-//     constructor(listofSteps) {
-//         this.dots=[];
-//         this.numberofDots=listofSteps.length;
-//         this.dotsFilled=0
-//         this.listofSteps=listofSteps
-//     }
-
-//     add_oneDot() {
-//         var n = this.dots.length +1;
-//         const wrapperDiv = document
-//         .createElement("div")
-//         wrapperDiv.classList.add("dot");
-//         const divTitle = document
-//         .createElement("div")
-//         divTitle.setAttribute("class", "title");
-//         divTitle.textContent = n.toString()
-//         const divDesc = document
-//         .createElement("div")
-//         divDesc.setAttribute("class", "description");
-//         divDesc.textContent = this.listofSteps[n-1]
-//         wrapperDiv.appendChild(divTitle);
-//         wrapperDiv.appendChild(divDesc);
-//         this.dots.push(wrapperDiv)
-//         document.getElementById("dotsWrapper").appendChild(wrapperDiv);
-//     }
-//     add_allDots() {
-//         for(var i =0; i<this.numberofDots; i++) { this.add_oneDot() }
-//     }
-//     setProgressWidth() {
-//         document.getElementById("sizeProgressBar").style.width = (100/(this.numberofDots-1)*(this.dotsFilled-1)).toString()+"%";
-//     }
-//     fillDot() {
-//         this.dots[this.dotsFilled].classList.remove("dot")
-//         this.dots[this.dotsFilled].classList.add("dotFilled")
-//         this.dotsFilled++
-//         this.setProgressWidth()
-//     }
-//     removeDots() {
-//         for(var i =0; i<this.dots.length; i++) { document.getElementById("dotsWrapper").removeChild(this.dots[i]) }
-//         this.dots=[]
-//     }
-//     goToStep(n) {
-//         if (n>this.numberofDots) { n=this.numberofDots}
-//         this.removeDots()
-//         this.add_allDots();
-//         for(var i =0; i<n; i++) { this.fillDot() }
-//     }
-// }
 
 export function ProgressStepBar(props) {
     if (props.step > props.listOfStep.length) {
